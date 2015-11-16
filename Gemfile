@@ -25,6 +25,7 @@ gem 'redcarpet', '>= 3.1', require: false unless RUBY_ENGINE == 'jruby'
 gem 'rubydns', '~> 1.0.1', require: false
 
 # To test javascript
+gem 'phantomjs', require: false
 gem 'poltergeist', '~> 1.7.0', require: false
 
 # For less, note there is no compatible JS runtime for windows

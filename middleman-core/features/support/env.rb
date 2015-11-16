@@ -4,7 +4,12 @@ ENV["AUTOLOAD_SPROCKETS"] ||= "false"
 require 'simplecov'
 SimpleCov.root(File.expand_path(File.dirname(__FILE__) + '/../..'))
 
+require 'phantomjs'
 require 'capybara/poltergeist'
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, phantomjs: Phantomjs.path)
+end
+
 Capybara.javascript_driver = :poltergeist
 
 require 'coveralls'

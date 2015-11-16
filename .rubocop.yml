@@ -23,6 +23,8 @@ MethodLength:
   Enabled: false
 ClassLength:
   Enabled: false
+ModuleLength:
+  Enabled: false
 Documentation:
   Enabled: false
 HashSyntax:

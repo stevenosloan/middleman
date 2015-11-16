@@ -8,10 +8,13 @@ module Middleman
         # Setup a default helpers paths
         app.config.define_setting :helpers_dir, 'helpers', 'Directory to autoload helper modules from'
         app.config.define_setting :helpers_filename_glob, '**.rb', 'Glob pattern for matching helper ruby files'
+
+        # rubocop:disable Style/BlockDelimiters
         app.config.define_setting :helpers_filename_to_module_name_proc, proc { |filename|
           basename = File.basename(filename, File.extname(filename))
           basename.camelcase
         }, 'Proc implementing the conversion from helper filename to module name'
+        # rubocop:enable Style/BlockDelimiters
       end
 
       def after_configuration

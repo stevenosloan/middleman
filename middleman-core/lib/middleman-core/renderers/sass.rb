@@ -3,7 +3,7 @@ require 'sass'
 SASS_MODULE = begin
   require 'sassc'
   ::SassC
-rescue LoadError => e
+rescue LoadError
   ::Sass
 end
 

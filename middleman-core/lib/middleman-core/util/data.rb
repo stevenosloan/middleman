@@ -24,11 +24,12 @@ module Middleman::Util::Data
       return [{}, nil]
     end
 
-    start_delims, stop_delims = frontmatter_delims
-      .values
-      .flatten(1)
-      .transpose
-      .map(&Regexp.method(:union))
+    # rubocop:disable Style/MultilineOperationIndentation
+    start_delims, stop_delims = frontmatter_delims.values
+                                                  .flatten(1)
+                                                  .transpose
+                                                  .map(&Regexp.method(:union))
+    # rubocop:enable Style/MultilineOperationIndentation
 
     match = /
       \A(?:[^\r\n]*coding:[^\r\n]*\r?\n)?

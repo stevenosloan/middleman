@@ -4,12 +4,15 @@ require 'middleman-core/contracts'
 class Middleman::Extensions::MinifyJavascript < ::Middleman::Extension
   option :inline, false, 'Whether to minify JS inline within HTML files'
   option :ignore, [], 'Patterns to avoid minifying'
+  option :content_types, %w(application/javascript), 'Content types of resources that contain JS'
+  option :inline_content_types, %w(text/html text/php), 'Content types of resources that contain inline JS'
+
+  # rubocop:disable Style/BlockDelimiters
   option :compressor, proc {
     require 'uglifier'
     ::Uglifier.new
   }, 'Set the JS compressor to use.'
-  option :content_types, %w(application/javascript), 'Content types of resources that contain JS'
-  option :inline_content_types, %w(text/html text/php), 'Content types of resources that contain inline JS'
+  # rubocop:enable Style/BlockDelimiters
 
   def ready
     # Setup Rack middleware to minify JS

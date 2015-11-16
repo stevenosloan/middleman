@@ -4,12 +4,15 @@ require 'middleman-core/contracts'
 class Middleman::Extensions::MinifyCss < ::Middleman::Extension
   option :inline, false, 'Whether to minify CSS inline within HTML files'
   option :ignore, [], 'Patterns to avoid minifying'
+  option :content_types, %w(text/css), 'Content types of resources that contain CSS'
+  option :inline_content_types, %w(text/html text/php), 'Content types of resources that contain inline CSS'
+
+  # rubocop:disable Style/BlockDelimiters
   option :compressor, proc {
     require 'sass'
     SassCompressor
   }, 'Set the CSS compressor to use.'
-  option :content_types, %w(text/css), 'Content types of resources that contain CSS'
-  option :inline_content_types, %w(text/html text/php), 'Content types of resources that contain inline CSS'
+  # rubocop:enable Style/BlockDelimiters
 
   def ready
     # Setup Rack middleware to minify CSS
